@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Investment</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>✏️ Edit Investment</h1>
+        <form action="/edit/{{ inv.id }}" method="POST">
+            <input name="name" value="{{ inv.name }}" required>
+            <select name="type">
+                <option {% if inv.type == "Stock" %}selected{% endif %}>Stock</option>
+                <option {% if inv.type == "Mutual Fund" %}selected{% endif %}>Mutual Fund</option>
+                <option {% if inv.type == "SIP" %}selected{% endif %}>SIP</option>
+                <option {% if inv.type == "FD" %}selected{% endif %}>FD</option>
+                <option {% if inv.type == "Gold" %}selected{% endif %}>Gold</option>
+                <option {% if inv.type == "Crypto" %}selected{% endif %}>Crypto</option>
+            </select>
+            <input name="quantity" type="number" step="0.01" value="{{ inv.quantity }}" required>
+            <input name="price" type="number" step="0.01" value="{{ inv.price }}" required>
+            <input name="current_price" type="number" step="0.01" value="{{ inv.current_price }}" required>
+            <button type="submit">💾 Update</button>
+        </form>
+    </div>
+</body>
+</html>
